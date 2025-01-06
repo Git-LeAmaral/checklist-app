@@ -2,24 +2,29 @@
   <app-header [sidenav]="sidenav"></app-header>
 
   <mat-sidenav-container>
-
     <mat-sidenav #sidenav class="w-10p">
-      <mat-list >
+      <mat-list>
         <mat-list-item (click)="sidenav.toggle()">
           <mat-icon>home</mat-icon>
           <span class="ml-15p">
-            <a href="/">Home</a>
+            <a [routerLink]="['/']">Home</a>
+          </span>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>category</mat-icon>
+          <span class="ml-15p">
+            <a [routerLink]="['/categoria']">Category</a>
           </span>
         </mat-list-item>
       </mat-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <h1>Teste</h1>
-
       <router-outlet></router-outlet>
     </mat-sidenav-content>
-
   </mat-sidenav-container>
 
   <app-footer></app-footer>
