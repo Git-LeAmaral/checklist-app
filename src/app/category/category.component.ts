@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../_models/category';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { CategoryEditComponent } from '../category-edit/category-edit.component';
 
 export const CATEGORY_DATA = [
   {name: 'Educação', guid: 'aaa-bbb-ccc-dddd'},
@@ -25,8 +26,13 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public editCategory(category: Category) {
+  public editCategory(inputCategory: Category) {
     console.log('edit category clicked');
+
+    this.dialog.open(CategoryEditComponent, { disableClose: true,
+      data: { editablecategory:  inputCategory}}).afterClosed().subscribe( resp => {
+      console.log('Modal editar fechado');
+  })
   }
 
   public deleteCategory(category: Category) {
